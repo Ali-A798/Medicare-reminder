@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MediCare – Medicine Reminder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="logo">
+        <div class="icon">❤</div>
+        <div>
+          <h1>MediCare</h1>
+          <p>Your Personal Medicine Reminder</p>
+        </div>
+      </header>
+
+      <main class="card">
+        <h2>Set Your Reminder</h2>
+        <p class="subtitle">Never miss your medication schedule</p>
+
+        <form id="reminderForm">
+          <label>
+            Patient Name
+            <input
+              type="text"
+              id="patientName"
+              placeholder="Enter your name"
+              required
+            />
+          </label>
+
+          <label>
+            Medicine Name
+            <input
+              type="text"
+              id="medicineName"
+              placeholder="Enter medicine name"
+              required
+            />
+          </label>
+
+          <label>
+            Dosage Time
+            <input type="time" id="dosageTime" required />
+          </label>
+
+          <button type="submit" class="primary-btn">Save Reminder</button>
+        </form>
+
+        <ul id="reminderList"></ul>
+      </main>
+
+      <footer>
+        <p>Stay healthy and never miss a dose</p>
+      </footer>
+
+      <!-- Simple audio alarm (optional) -->
+      <audio id="alarmSound">
+        <source
+          src="C:\Users\Alias\OneDrive\python\MedReminder\mornig_alarm_piano.mp3"
+          type="audio/ogg"
+        />
+      </audio>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
