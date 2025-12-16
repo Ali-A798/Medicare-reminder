@@ -146,3 +146,15 @@ setInterval(() => {
 
   saveReminders();
 }, 30000);
+const testAlarmBtn = document.getElementById("testAlarmBtn");
+
+if (testAlarmBtn) {
+  testAlarmBtn.addEventListener("click", () => {
+    if (!alarmSound) return;
+    alarmSound.currentTime = 0;
+    alarmSound.play().catch((err) => {
+      console.log("Test alarm blocked:", err);
+      alert("Browser blocked the sound. Check volume and sound settings.");
+    });
+  });
+}
