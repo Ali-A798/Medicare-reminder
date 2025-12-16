@@ -32,24 +32,29 @@ document.body.appendChild(enableSoundBtn);
 enableSoundBtn.addEventListener("click", () => {
   if (!alarmSound) return;
 
-  // first attempt: tiny silent play directly on click
+  // try to unlock audio with a tiny sound
   alarmSound.volume = 0.01;
+  alarmSound.currentTime = 0;
+
   const playPromise = alarmSound.play();
 
   if (playPromise !== undefined) {
     playPromise
       .then(() => {
-        // audio unlocked successfully
+        // success: audio is now unlocked on this device
         alarmSound.pause();
         alarmSound.currentTime = 0;
         alarmSound.volume = 1;
-        enableSoundBtn.style.display = "none";
+        enableSoundBtn.textContent = "Sound enabled ✅";
+        // hide after a moment
+        setTimeout(() => {
+          enableSoundBtn.style.display = "none";
+        }, 800);
       })
-      .catch((error) => {
-        console.log("Audio unlock failed:", error);
-        // show a short message or keep the button visible
+      .catch((err) => {
+        console.log("Mobile audio unlock failed:", err);
         alert(
-          "Your browser blocked sound. Please make sure your ringer is ON and tap again."
+          "Your browser blocked the sound. Please turn off silent/vibrate mode and tap Enable Sound again."
         );
       });
   }
