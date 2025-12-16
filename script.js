@@ -32,18 +32,27 @@ document.body.appendChild(enableSoundBtn);
 enableSoundBtn.addEventListener("click", () => {
   if (!alarmSound) return;
 
-  alarmSound.volume = 0;
-  alarmSound
-    .play()
-    .then(() => {
-      alarmSound.pause();
-      alarmSound.currentTime = 0;
-      alarmSound.volume = 1;
-      enableSoundBtn.style.display = "none";
-    })
-    .catch(() => {
-      // ignore if browser still blocks it
-    });
+  // first attempt: tiny silent play directly on click
+  alarmSound.volume = 0.01;
+  const playPromise = alarmSound.play();
+
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        // audio unlocked successfully
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+        alarmSound.volume = 1;
+        enableSoundBtn.style.display = "none";
+      })
+      .catch((error) => {
+        console.log("Audio unlock failed:", error);
+        // show a short message or keep the button visible
+        alert(
+          "Your browser blocked sound. Please make sure your ringer is ON and tap again."
+        );
+      });
+  }
 });
 
 // Load existing reminders from localStorage
