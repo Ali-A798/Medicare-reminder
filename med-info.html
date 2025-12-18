@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MediCare – Medicine Information</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="logo">
+        <div class="icon">❤</div>
+        <div>
+          <h1>MediCare</h1>
+          <p>Medicine Information</p>
+        </div>
+      </header>
+
+      <main class="card">
+        <h2>Medicine Information</h2>
+        <p class="subtitle">
+          Type a symptom or medicine name (e.g., fever, cold, headache).
+        </p>
+
+        <section class="ai-section">
+          <div class="ai-row">
+            <input
+              type="text"
+              id="aiMedicineInput"
+              placeholder="Search by symptom or medicine name"
+            />
+            <button type="button" id="aiSearchBtn" class="primary-btn">
+              Get Info
+            </button>
+          </div>
+
+          <div id="aiResult" class="ai-result"></div>
+
+          <p style="margin-top: 6px; font-size: 10px; color: #a33">
+            Suggestions are simplified and for demo use only. Do not start or
+            stop medicines without a doctor's advice.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="med-info.js"></script>
+  </body>
+</html>

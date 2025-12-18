@@ -49,7 +49,39 @@
           </button>
 
           <button type="submit" class="primary-btn">Save Reminder</button>
+          <button
+            type="button"
+            class="primary-btn"
+            onclick="window.open('med-info.html', '_blank')"
+          >
+            Open Medicine Information
+          </button>
         </form>
+        <section class="ai-section">
+          <h3>Medicine Info Helper</h3>
+          <p class="subtitle">
+            Type a symptom or medicine name (e.g., fever, cold, headache,
+            paracetamol).
+          </p>
+
+          <div class="ai-row">
+            <input
+              type="text"
+              id="aiMedicineInput"
+              placeholder="Search by symptom or medicine name"
+            />
+            <button type="button" id="aiSearchBtn" class="primary-btn">
+              Get Info
+            </button>
+          </div>
+
+          <div id="aiResult" class="ai-result"></div>
+
+          <p style="margin-top: 6px; font-size: 10px; color: #a33">
+            Suggestions are simplified and for demo/education only. Do not start
+            or stop medicines without a doctor's advice.
+          </p>
+        </section>
 
         <ul id="reminderList"></ul>
       </main>
